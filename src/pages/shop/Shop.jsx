@@ -1,10 +1,18 @@
 import React, { useState } from "react";
 import shopData from "./shop-data.json";
+import PreviewCollection from "../../components/preview-collection/PreviewCollection.jsx";
 
-const ShopPage = () => {
+const Shop = () => {
     const [collections, setCollections] = useState(shopData);
-
-    return <h1>Hello from Shop Page</h1>;
+    return (
+        <div className="shop-page">
+            {
+                collections.map(({ id, ...otherCollectionProps }) => {
+                    return <PreviewCollection key={id} {...otherCollectionProps} />
+                })
+            }
+        </div>
+    )
 };
 
-export default ShopPage;
+export default Shop;
